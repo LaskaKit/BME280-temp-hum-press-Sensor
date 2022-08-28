@@ -1,36 +1,33 @@
-# Modul for temperature and humidity sensor SHT40
-If you are looking for a versatile temperature and humidity module for high quality sensor, you shall check this module which we develop with Sensirion sensor.
-On the one-side PCB is a footprint for SHT40 in DFN4 package, pull-up resisitors for I2C bus and decoupling capacitor.</br>
+# The module with measurement of pressure, temperature and humidity BME280 with μSup connector
+Are you looking for a sensor what is able to measure temperature, humidity and pressure? Probably, you would like to buy BME280, but we are 100% sure you will appreciate the BME280 with our module. It is so versatile!
 
-The module is available on https://www.laskakit.cz/laskakit-sht40-senzor-teploty-a-vlhkosti-vzduchu/
+![Assembled module - TOP](https://github.com/LaskaKit/BME280-temp-hum-press-Sensor/blob/main/img/BME280_uSup1.jpg)
 
-![PCB](https://github.com/LaskaKit/Temp-HumSensor-SHTxx/blob/main/img/sht40.JPG)
+Do you want to quickly connect BME280 module with your evaluation board/shield? Use [μSup connector](https://blog.laskarduino.cz/predstavujeme-univerzalni-konektor-pro-propojeni-modulu-a-cidel-%ce%bcsup/), there are two connectors just in case you would like to connect another modules. If you don't have a cable with μSup (or SparkFun Qwiic or Adafruit STEMMA, yes, there are compatible each other), you can connect BME280 with 4pins header to another board. Just use dupont wires. 
 
-Why we selected sensors from Sensirion? 
-The sensor are used very often, thanks to good parameters and also they are able to work longtime without degradation.
-Sensirion also develop own libraries for Arduino evaluation boards, thanks to this, the implementation is much easier. As we mentioned, sensors made by Sensirion are very good and hence you may find a lot of libraries.
+Is the module so big? No problem, just cut the part with connectors. Then you can put the rest of connector [to this cover](https://www.laskakit.cz/kryt-senzoru-s-kabelem--4pin--1m/)
 
-## SHT40
-The SHT40 sensor is a new sensor in product family of Sensirion. It offers very good accurace and also very low price compared with another sensors.
+The module includes built-in pull-up resistors for I2C (SDA/SCL) signals. The default setting is that solder bridge is closed, it means the pull-up resistors are connected to I2C. You can screw the module to your box thanks to two holes on the sides. 
 
-SHT40 (or another variants like SHT41 and SHT45) are packaged in DFN4, so it measn 4 pads for soldering.
+## BME280
+The sensor BME280 is made by Bosch company with huge community. You can find a library for all of platforms such as Arduino, STM32 or Raspberry Pi.</br>
+https://github.com/adafruit/Adafruit_BME280_Library </br>
+https://github.com/sparkfun/SparkFun_BME280_Arduino_Library</br>
+https://github.com/ProjectsByJRP/stm32-bme280</br>
+https://pypi.org/project/RPi.bme280/</br>
 
-The accuracy of temperature is +-0.2 °C for range from 0 °C to 60 °C, and the resolution is 0.01 °C. The aging of sensor is defined as less than 0.03 °C per year. 
+The measurement accuracy is +-1 °C in range from 0 °C to 65 °C, the resolution is defined as 0.01 °C and the sensor is able to work in range from -40 to +85 °C, of course the inaccuracy outside of 0 - 65 °C range is higher - up to 1.5 °C. 
 
-![SHT31 - graf teploty](https://github.com/LaskaKit/Temp-HumSensor-SHTxx/blob/main/img/SHT40temp.JPG)
-The humidity accuracy is defined as +-1.8 %RH and the resolution is specified as 0.01 %RH. 0.25 % RH is the effect of aging of sensor.
+The humidity accuracy is defined as +-3 %RH, the resolution is 0.008 %RH and long-term stability is lower than +-0,5 %RH per year.
 
-![SHT31 - graf teploty](https://github.com/LaskaKit/Temp-HumSensor-SHTxx/blob/main/img/SHT40hum.JPG)
+The pressure accuracy is  +-1 hPa in range from 0 to 65 °C, the resolution is 0.18 Pa and log-term stability is defined as +- 1hPa.  
 
-The power voltage range is so wide, from 1.08V up to 3.6V. 
-The power consumption is around 350 uA during the measurement and 0.08 uA in sleep mode.
+The minimum and maximum power supply is from 1.71V up to 3.6V. </br>
+The power consumption achieves up to 3.6 uA (temperature, humidity, pressure with 1Hz measurement) and the current in deep-sleep is 0.1 uA. 
 
-SHT40 also have own heater which may increase the accuracy of measured value of humidity. It may be configured by I2C command and set in a few points and times.
-20mW for 0.1s, 20mW for 1s
-and similar with 110 mW and 200 mW power of heater.
+The I2C address can be set to 0x77 or 0x76, the default address is 0x77 and defined by closed solder bridge. If you want to use 0x76 I2C address, you have to cut the track in solder bridge and solder oposite side with center pad. 
 
-I2C address may be 0x44 (for SHT40-**A**D1B) or 0x45 (for SHT40-**B**D1B) depending of type of SHT40. 
+![Assembled module - BOTTOM](https://github.com/LaskaKit/BME280-temp-hum-press-Sensor/blob/main/img/BME280_uSup2.jpg)
 
-The example code for SHT40 is also available in this repository.
 
-The module is available on https://www.laskakit.cz/laskakit-sht40-senzor-teploty-a-vlhkosti-vzduchu/
+The example code with ESP32-LPkit is available on https://github.com/LaskaKit/BME280-temp-hum-press-Sensor/tree/main/SW
